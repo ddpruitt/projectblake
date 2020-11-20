@@ -31,13 +31,5 @@
         <div class="alert alert-success">Response we get from DS for POSTing the above JWT to https://{oauthBasePath}/oauth/token.</div>
         <pre>@Model.JwtPostContent</pre>
 
-        <h2>Your email address</h2>
-        <div  class="alert alert-success">We use your email address to get your User Id from Docusign.</div>
-        @using (Html.BeginForm("TokenPost", "Home", FormMethod.Post))
-        {
-            <input type="email" id="email" name="email" class="form-control" />
-
-            <input type="submit" value="Submit" />
-        }
     </div>
 </div>
