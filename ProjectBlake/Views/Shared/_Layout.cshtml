@@ -8,38 +8,37 @@
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
+    <nav class="navbar navbar-expand-sm navbar-dark fixed-top bg-dark">
         <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Project Blake", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, null)</li>
-                    <li>@Html.ActionLink("API", "Index", "Help", new { area = "" }, null)</li>
-                    @if (ViewBag.IsLoggedIn)
-                    {
-                        <li>
-                            @using (Html.BeginForm("Logout", "Home", FormMethod.Post))
-                            {
-                                <input type="submit" value="Logout" class="btn btn-link navbar-btn" />
-                            }
-                        </li>
-                    }
-                    else
-                    {
-                        <li><a href="@ViewBag.ConsentUrl">JWT Consent</a></li>
-                        <li>@Html.ActionLink("JWT Consent (Redirect)", "Consent", "Home", new { area = "" }, null)</li>
-                    }
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            </button>
+            <a class="navbar-brand" href="/">Application name</a>
+            <div class="navbar-collapse collapse" id="navbarSupportedContent">
+                <ul class="nav navbar-nav mr-auto">
+                    <li class="nav-item"><a href="/" class="nav-link">Home</a></li>
+                    <li class="nav-item"><a href="/Home/About" class="nav-link">About</a></li>
+                    <li class="nav-item"><a href="/Home/Contact" class="nav-link">Contact</a></li>
                 </ul>
+
+                @if (ViewBag.IsLoggedIn)
+                {
+                    <li>
+                        @using (Html.BeginForm("Logout", "Home", FormMethod.Post))
+                        {
+                            <input type="submit" value="Logout" class="btn btn-link navbar-btn" />
+                        }
+                    </li>
+                }
+                else
+                {
+                    <li><a href="@ViewBag.ConsentUrl">JWT Consent</a></li>
+                    <li>@Html.ActionLink("JWT Consent (Redirect)", "Consent", "Home", new { area = "" }, null)</li>
+                }
+
             </div>
         </div>
-    </div>
+    </nav>
+
     <div class="container body-content">
         @RenderBody()
         <hr />
